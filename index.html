@@ -25,7 +25,7 @@
   h3{font:600 15px/1 "Instrument Sans",system-ui,sans-serif;color:var(--brass);margin:22px 0 4px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
   header .date{margin-top:14px;font-weight:500;letter-spacing:.16em;color:var(--muted)}
   .item{display:grid;grid-template-columns:88px 1fr auto;gap:16px;align-items:center;padding:12px 0;border-bottom:1px solid var(--rule);break-inside:avoid;page-break-inside:avoid}
-  .pic{width:88px;height:88px;border-radius:50%;background:var(--tile);overflow:hidden;position:relative}
+  .pic{width:88px;height:88px;border-radius:50%;background:var(--tile)}
   .pic img{width:100%;height:100%;object-fit:cover;display:block}
   .pic.missing img{display:none}
   .name{font-weight:600;font-size:16px}
@@ -35,14 +35,16 @@
   .item.empty .name{color:var(--muted);font-weight:500}
   .item.single{grid-template-columns:1fr}
   footer{margin-top:40px;color:var(--muted);font-size:13px;text-align:center}
-  .pic:not(.missing){cursor:zoom-in}
-  .pic:not(.missing):focus-visible{outline:2px solid var(--brass);outline-offset:3px}
-  #lightbox{position:fixed;inset:0;z-index:50;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;background:rgba(36,48,43,.88);cursor:zoom-out}
-  #lightbox.open{display:flex}
-  #lightbox img{max-width:min(92vw,720px);max-height:78vh;border-radius:10px;object-fit:contain;background:var(--tile)}
-  #lightbox .cap{color:#fff;font:600 24px/1.2 "Cormorant Garamond",Georgia,serif;text-align:center}
-  #lightbox .close{position:absolute;top:14px;right:18px;color:#fff;font-size:34px;line-height:1;background:none;border:0;cursor:pointer}
-  @media print{#lightbox{display:none!important}}
+  .zc{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+  .thumb{display:block;width:100%;height:100%;border-radius:50%;overflow:hidden;cursor:zoom-in;-webkit-tap-highlight-color:transparent}
+  .zc:focus-visible + .thumb{outline:2px solid var(--brass);outline-offset:3px}
+  .lb{position:fixed;inset:0;z-index:50;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;background:rgba(36,48,43,.9);cursor:zoom-out;-webkit-tap-highlight-color:transparent}
+  .zc:checked ~ .lb{display:flex}
+  .pic .lb img{width:auto;height:auto;max-width:min(92vw,720px);max-height:76vh;border-radius:10px;object-fit:contain;background:var(--tile)}
+  .lb .cap{color:#fff;font:600 24px/1.2 "Cormorant Garamond",Georgia,serif;text-align:center}
+  .lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:38px;line-height:1}
+  .pic.missing .lb{display:none!important}
+  @media print{.lb{display:none!important}}
   @media (max-width:520px){
     .item{grid-template-columns:64px 1fr auto;gap:12px}
     .pic{width:64px;height:64px}
@@ -68,22 +70,22 @@
   <h2>Signature Cocktails</h2>
   <p class="sub">Craft Cocktail</p>
 
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/f29a5fd6-dac2-4e7d-ae86-67364bd440fd.jpg" alt="Afterglow"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z1" aria-label="Enlarge photo: Afterglow"><label class="thumb" for="z1"><img src="https://grandwyndhamistanbul.com.tr/images/f29a5fd6-dac2-4e7d-ae86-67364bd440fd.jpg" alt="Afterglow"></label><label class="lb" for="z1"><img src="https://grandwyndhamistanbul.com.tr/images/f29a5fd6-dac2-4e7d-ae86-67364bd440fd.jpg" alt="Afterglow" loading="lazy"><span class="cap">Afterglow</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Afterglow</div><div class="desc">Ford’s Cin, Mezcal, St-Germain, Şeftali Nektarı, Lime Kordiyal</div></div><div class="price">1.200 ₺</div></div>
 
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/7b0b87c3-dd61-421c-9ad0-97ac8df22e41.jpg" alt="Barrel Aged Negroni"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z2" aria-label="Enlarge photo: Barrel Aged Negroni"><label class="thumb" for="z2"><img src="https://grandwyndhamistanbul.com.tr/images/7b0b87c3-dd61-421c-9ad0-97ac8df22e41.jpg" alt="Barrel Aged Negroni"></label><label class="lb" for="z2"><img src="https://grandwyndhamistanbul.com.tr/images/7b0b87c3-dd61-421c-9ad0-97ac8df22e41.jpg" alt="Barrel Aged Negroni" loading="lazy"><span class="cap">Barrel Aged Negroni</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Barrel Aged Negroni</div><div class="desc">Tanqueray Ten, Campari, Martini Rosso</div></div><div class="price">1.100 ₺</div></div>
 
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/29b90e47-7a7c-4218-b1fd-fe7e643c08cf.jpg" alt="Beatrix Kiddo"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z3" aria-label="Enlarge photo: Beatrix Kiddo"><label class="thumb" for="z3"><img src="https://grandwyndhamistanbul.com.tr/images/29b90e47-7a7c-4218-b1fd-fe7e643c08cf.jpg" alt="Beatrix Kiddo"></label><label class="lb" for="z3"><img src="https://grandwyndhamistanbul.com.tr/images/29b90e47-7a7c-4218-b1fd-fe7e643c08cf.jpg" alt="Beatrix Kiddo" loading="lazy"><span class="cap">Beatrix Kiddo</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Beatrix Kiddo</div><div class="desc">Grey Goose Votka, Skinos Mastika, Ev Yapımı Zencefil Birası, Greyfurt Kordiyal</div></div><div class="price">1.400 ₺</div></div>
 
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/819ab64e-acdc-4e5b-92e3-17a6fea52482.jpg" alt="La Paz"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z4" aria-label="Enlarge photo: La Paz"><label class="thumb" for="z4"><img src="https://grandwyndhamistanbul.com.tr/images/819ab64e-acdc-4e5b-92e3-17a6fea52482.jpg" alt="La Paz"></label><label class="lb" for="z4"><img src="https://grandwyndhamistanbul.com.tr/images/819ab64e-acdc-4e5b-92e3-17a6fea52482.jpg" alt="La Paz" loading="lazy"><span class="cap">La Paz</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">La Paz</div><div class="desc">Acı Biber Aromalı Olmeca Silver, Çarkıfelek Meyvesi, Hibiskus Kordiyal, Greyfurt Kordiyal</div></div><div class="price">1.100 ₺</div></div>
 
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/0d24f276-142b-4f02-8372-a581f3e9c019.jpg" alt="Uppsala"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z5" aria-label="Enlarge photo: Uppsala"><label class="thumb" for="z5"><img src="https://grandwyndhamistanbul.com.tr/images/0d24f276-142b-4f02-8372-a581f3e9c019.jpg" alt="Uppsala"></label><label class="lb" for="z5"><img src="https://grandwyndhamistanbul.com.tr/images/0d24f276-142b-4f02-8372-a581f3e9c019.jpg" alt="Uppsala" loading="lazy"><span class="cap">Uppsala</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Uppsala</div><div class="desc">J.W. Black Label, Kuzu Kulağı, Çarkıfelek Meyvesi, Greyfurt Kordiyal</div></div><div class="price">1.100 ₺</div></div>
 
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/fde70e69-f725-4197-b548-4a5650276a26.jpg" alt="Will Turner"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z6" aria-label="Enlarge photo: Will Turner"><label class="thumb" for="z6"><img src="https://grandwyndhamistanbul.com.tr/images/fde70e69-f725-4197-b548-4a5650276a26.jpg" alt="Will Turner"></label><label class="lb" for="z6"><img src="https://grandwyndhamistanbul.com.tr/images/fde70e69-f725-4197-b548-4a5650276a26.jpg" alt="Will Turner" loading="lazy"><span class="cap">Will Turner</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Will Turner</div><div class="desc">Kakao Yağı ile Yıkanmış Bumbu Rom, Kahveli Campari, Martini Rosso</div></div><div class="price">1.200 ₺</div></div>
 
 </section>
@@ -92,22 +94,22 @@
   <h2>Classic Cocktails</h2>
   <p class="sub">Klasik Kokteyller</p>
 
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/1bd60d21-4ceb-4ee8-8582-b464fcb8151b.jpg" alt="Aperol Spritz"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z7" aria-label="Enlarge photo: Aperol Spritz"><label class="thumb" for="z7"><img src="https://grandwyndhamistanbul.com.tr/images/1bd60d21-4ceb-4ee8-8582-b464fcb8151b.jpg" alt="Aperol Spritz"></label><label class="lb" for="z7"><img src="https://grandwyndhamistanbul.com.tr/images/1bd60d21-4ceb-4ee8-8582-b464fcb8151b.jpg" alt="Aperol Spritz" loading="lazy"><span class="cap">Aperol Spritz</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Aperol Spritz</div><div class="desc">Aperol, Cinzano Prosecco, Soda</div></div><div class="price">1.200 ₺</div></div>
 
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/600942b7-de38-4428-9543-0d15d938088e.jpg" alt="Dry Martini"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z8" aria-label="Enlarge photo: Dry Martini"><label class="thumb" for="z8"><img src="https://grandwyndhamistanbul.com.tr/images/600942b7-de38-4428-9543-0d15d938088e.jpg" alt="Dry Martini"></label><label class="lb" for="z8"><img src="https://grandwyndhamistanbul.com.tr/images/600942b7-de38-4428-9543-0d15d938088e.jpg" alt="Dry Martini" loading="lazy"><span class="cap">Dry Martini</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Dry Martini</div><div class="desc">Tanqueray, Martini Extra Dry, Limon Twist</div></div><div class="price">1.050 ₺</div></div>
 
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/ad92cde4-0900-4c26-a02f-4b40919439e0.jpg" alt="Espresso Martini"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z9" aria-label="Enlarge photo: Espresso Martini"><label class="thumb" for="z9"><img src="https://grandwyndhamistanbul.com.tr/images/ad92cde4-0900-4c26-a02f-4b40919439e0.jpg" alt="Espresso Martini"></label><label class="lb" for="z9"><img src="https://grandwyndhamistanbul.com.tr/images/ad92cde4-0900-4c26-a02f-4b40919439e0.jpg" alt="Espresso Martini" loading="lazy"><span class="cap">Espresso Martini</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Espresso Martini</div><div class="desc">Smirnoff, Kahlua, Espresso</div></div><div class="price">1.050 ₺</div></div>
 
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/a89c1a45-d8af-4498-89e4-d939614a7417.jpg" alt="Margarita"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z10" aria-label="Enlarge photo: Margarita"><label class="thumb" for="z10"><img src="https://grandwyndhamistanbul.com.tr/images/a89c1a45-d8af-4498-89e4-d939614a7417.jpg" alt="Margarita"></label><label class="lb" for="z10"><img src="https://grandwyndhamistanbul.com.tr/images/a89c1a45-d8af-4498-89e4-d939614a7417.jpg" alt="Margarita" loading="lazy"><span class="cap">Margarita</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Margarita</div><div class="desc">Olmeca Silver, Cointreau, Lime</div></div><div class="price">1.050 ₺</div></div>
 
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/6d426604-0e65-46f8-9f78-d44c4a1fb9aa.jpg" alt="Old Cuban"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z11" aria-label="Enlarge photo: Old Cuban"><label class="thumb" for="z11"><img src="https://grandwyndhamistanbul.com.tr/images/6d426604-0e65-46f8-9f78-d44c4a1fb9aa.jpg" alt="Old Cuban"></label><label class="lb" for="z11"><img src="https://grandwyndhamistanbul.com.tr/images/6d426604-0e65-46f8-9f78-d44c4a1fb9aa.jpg" alt="Old Cuban" loading="lazy"><span class="cap">Old Cuban</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Old Cuban</div><div class="desc">Havana Club 7 YO, Lime, Angostura Bitter, Cinzano Prosecco</div></div><div class="price">1.100 ₺</div></div>
 
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/5b2935d9-aef0-40ff-a35b-d926b4e2128d.jpg" alt="Old Fashioned"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z12" aria-label="Enlarge photo: Old Fashioned"><label class="thumb" for="z12"><img src="https://grandwyndhamistanbul.com.tr/images/5b2935d9-aef0-40ff-a35b-d926b4e2128d.jpg" alt="Old Fashioned"></label><label class="lb" for="z12"><img src="https://grandwyndhamistanbul.com.tr/images/5b2935d9-aef0-40ff-a35b-d926b4e2128d.jpg" alt="Old Fashioned" loading="lazy"><span class="cap">Old Fashioned</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Old Fashioned</div><div class="desc">Bullet Bourbon, Angostura Bitter, Şeker</div></div><div class="price">1.100 ₺</div></div>
 
 </section>
@@ -116,13 +118,13 @@
   <h2>Whiskies</h2>
   <p class="sub">Viski · 4 cl</p>
 
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/84cb9425-648d-4ccc-93fb-f192b2cae42f.jpg" alt="Caol Ila"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z13" aria-label="Enlarge photo: Caol Ila"><label class="thumb" for="z13"><img src="https://grandwyndhamistanbul.com.tr/images/84cb9425-648d-4ccc-93fb-f192b2cae42f.jpg" alt="Caol Ila"></label><label class="lb" for="z13"><img src="https://grandwyndhamistanbul.com.tr/images/84cb9425-648d-4ccc-93fb-f192b2cae42f.jpg" alt="Caol Ila" loading="lazy"><span class="cap">Caol Ila</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Caol Ila</div><div class="desc">Single Malt İskoç Viski, Islay · Dumanlı</div></div><div class="price">850 ₺</div></div>
 
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/d3142156-8ff9-44d3-87e4-832615f54e62.jpg" alt="Glenfiddich 12 YO"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z14" aria-label="Enlarge photo: Glenfiddich 12 YO"><label class="thumb" for="z14"><img src="https://grandwyndhamistanbul.com.tr/images/d3142156-8ff9-44d3-87e4-832615f54e62.jpg" alt="Glenfiddich 12 YO"></label><label class="lb" for="z14"><img src="https://grandwyndhamistanbul.com.tr/images/d3142156-8ff9-44d3-87e4-832615f54e62.jpg" alt="Glenfiddich 12 YO" loading="lazy"><span class="cap">Glenfiddich 12 YO</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Glenfiddich 12 YO</div><div class="desc">Single Malt İskoç Viski</div></div><div class="price">1.100 ₺</div></div>
 
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/b2b020cf-033b-45a3-92bc-00cfdd5fa798.jpg" alt="Johnnie Walker Black Label"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z15" aria-label="Enlarge photo: Johnnie Walker Black Label"><label class="thumb" for="z15"><img src="https://grandwyndhamistanbul.com.tr/images/b2b020cf-033b-45a3-92bc-00cfdd5fa798.jpg" alt="Johnnie Walker Black Label"></label><label class="lb" for="z15"><img src="https://grandwyndhamistanbul.com.tr/images/b2b020cf-033b-45a3-92bc-00cfdd5fa798.jpg" alt="Johnnie Walker Black Label" loading="lazy"><span class="cap">Johnnie Walker Black Label</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Johnnie Walker Black Label</div><div class="desc">Blended İskoç Viski</div></div><div class="price">750 ₺</div></div>
 
 </section>
@@ -132,24 +134,24 @@
   <p class="sub">Kadeh Şaraplar</p>
 
   <h3>White · Beyaz</h3>
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/a10188d0-d46c-49cd-8c1c-502616da1f30.jpg" alt="Sartori Pinot Grigio"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z16" aria-label="Enlarge photo: Sartori Pinot Grigio"><label class="thumb" for="z16"><img src="https://grandwyndhamistanbul.com.tr/images/a10188d0-d46c-49cd-8c1c-502616da1f30.jpg" alt="Sartori Pinot Grigio"></label><label class="lb" for="z16"><img src="https://grandwyndhamistanbul.com.tr/images/a10188d0-d46c-49cd-8c1c-502616da1f30.jpg" alt="Sartori Pinot Grigio" loading="lazy"><span class="cap">Sartori Pinot Grigio</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Sartori Pinot Grigio</div><div class="desc">İtalya · Kadeh</div></div><div class="price">800 ₺</div></div>
 
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/ca730bfa-73bf-4fc5-b2bc-78691221429e.jpg" alt="Sevilen Isabey Chardonnay"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z17" aria-label="Enlarge photo: Sevilen Isabey Chardonnay"><label class="thumb" for="z17"><img src="https://grandwyndhamistanbul.com.tr/images/ca730bfa-73bf-4fc5-b2bc-78691221429e.jpg" alt="Sevilen Isabey Chardonnay"></label><label class="lb" for="z17"><img src="https://grandwyndhamistanbul.com.tr/images/ca730bfa-73bf-4fc5-b2bc-78691221429e.jpg" alt="Sevilen Isabey Chardonnay" loading="lazy"><span class="cap">Sevilen Isabey Chardonnay</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Sevilen Isabey Chardonnay</div><div class="desc">Yerli · Kadeh</div></div><div class="price">1.200 ₺</div></div>
 
   <h3>Red · Kırmızı</h3>
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/753b2316-c5f8-4d60-a24c-aa5649933db2.jpg" alt="Sevilen 900 Cabernet Sauvignon"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z18" aria-label="Enlarge photo: Sevilen 900 Cabernet Sauvignon"><label class="thumb" for="z18"><img src="https://grandwyndhamistanbul.com.tr/images/753b2316-c5f8-4d60-a24c-aa5649933db2.jpg" alt="Sevilen 900 Cabernet Sauvignon"></label><label class="lb" for="z18"><img src="https://grandwyndhamistanbul.com.tr/images/753b2316-c5f8-4d60-a24c-aa5649933db2.jpg" alt="Sevilen 900 Cabernet Sauvignon" loading="lazy"><span class="cap">Sevilen 900 Cabernet Sauvignon</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Sevilen 900 Cabernet Sauvignon</div><div class="desc">Yerli · Kadeh</div></div><div class="price">1.100 ₺</div></div>
 
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/8cf8be98-f415-4353-b6af-22063ef33b75.jpg" alt="Sevilen Nativus Boğazkere – Öküzgözü"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z19" aria-label="Enlarge photo: Sevilen Nativus Boğazkere – Öküzgözü"><label class="thumb" for="z19"><img src="https://grandwyndhamistanbul.com.tr/images/8cf8be98-f415-4353-b6af-22063ef33b75.jpg" alt="Sevilen Nativus Boğazkere – Öküzgözü"></label><label class="lb" for="z19"><img src="https://grandwyndhamistanbul.com.tr/images/8cf8be98-f415-4353-b6af-22063ef33b75.jpg" alt="Sevilen Nativus Boğazkere – Öküzgözü" loading="lazy"><span class="cap">Sevilen Nativus Boğazkere – Öküzgözü</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Sevilen Nativus Boğazkere – Öküzgözü</div><div class="desc">Yerli · Kadeh</div></div><div class="price">800 ₺</div></div>
 
   <h3>Rosé · Roze</h3>
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/6fea20a5-5418-4227-8231-97f12611845a.jpg" alt="Cielo Pinot Grigio Blush"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z20" aria-label="Enlarge photo: Cielo Pinot Grigio Blush"><label class="thumb" for="z20"><img src="https://grandwyndhamistanbul.com.tr/images/6fea20a5-5418-4227-8231-97f12611845a.jpg" alt="Cielo Pinot Grigio Blush"></label><label class="lb" for="z20"><img src="https://grandwyndhamistanbul.com.tr/images/6fea20a5-5418-4227-8231-97f12611845a.jpg" alt="Cielo Pinot Grigio Blush" loading="lazy"><span class="cap">Cielo Pinot Grigio Blush</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Cielo Pinot Grigio Blush</div><div class="desc">İtalya · Kadeh</div></div><div class="price">800 ₺</div></div>
 
-  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/30543ca3-b2af-4535-a351-367c14a5312c.jpg" alt="Sartori Pinot Grigio Blush"></div>
+  <div class="item"><div class="pic"><input type="checkbox" class="zc" id="z21" aria-label="Enlarge photo: Sartori Pinot Grigio Blush"><label class="thumb" for="z21"><img src="https://grandwyndhamistanbul.com.tr/images/30543ca3-b2af-4535-a351-367c14a5312c.jpg" alt="Sartori Pinot Grigio Blush"></label><label class="lb" for="z21"><img src="https://grandwyndhamistanbul.com.tr/images/30543ca3-b2af-4535-a351-367c14a5312c.jpg" alt="Sartori Pinot Grigio Blush" loading="lazy"><span class="cap">Sartori Pinot Grigio Blush</span><span class="x" aria-hidden="true">&times;</span></label></div>
     <div><div class="name">Sartori Pinot Grigio Blush</div><div class="desc">İtalya · Kadeh</div></div><div class="price">800 ₺</div></div>
 
 </section>
@@ -164,52 +166,17 @@
 
 </div>
 <script>
-  document.querySelectorAll('.pic img').forEach(function (img) {
-    function flag() { img.parentNode.classList.add('missing'); }
+  document.querySelectorAll('.thumb img').forEach(function (img) {
+    function flag() { img.closest('.pic').classList.add('missing'); }
     img.addEventListener('error', flag);
     if (img.complete && img.naturalWidth === 0) flag();
   });
 </script>
-<div id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged photo">
-  <button class="close" type="button" aria-label="Close">&times;</button>
-  <img alt="">
-  <div class="cap"></div>
-</div>
 <script>
-  (function () {
-    var box = document.getElementById('lightbox');
-    var big = box.querySelector('img');
-    var cap = box.querySelector('.cap');
-    var last = null;
-    function open(pic) {
-      var img = pic.querySelector('img');
-      if (pic.classList.contains('missing')) return;
-      last = pic;
-      big.src = img.currentSrc || img.src;
-      big.alt = img.alt;
-      cap.textContent = img.alt;
-      box.classList.add('open');
-      box.querySelector('.close').focus();
-    }
-    function close() {
-      box.classList.remove('open');
-      big.removeAttribute('src');
-      if (last) last.focus();
-    }
-    document.querySelectorAll('.pic').forEach(function (pic) {
-      pic.setAttribute('role', 'button');
-      pic.setAttribute('tabindex', '0');
-      pic.setAttribute('aria-label', 'Enlarge photo: ' + pic.querySelector('img').alt);
-      pic.addEventListener('click', function () { open(pic); });
-      pic.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(pic); }
-      });
-    });
-    box.addEventListener('click', close);
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && box.classList.contains('open')) close();
-    });
-  })();
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll('.zc:checked').forEach(function (c) { c.checked = false; });
+  });
 </script>
 </body>
 </html>
