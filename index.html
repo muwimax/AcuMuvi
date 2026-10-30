@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Açelya &amp; Muvi – Wedding Toast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --ink:#24302b; --muted:#6b6468; --brass:#b3366a; --paper:#fffafb; --rule:#efdce3; --tile:#f6e8ed;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.5 "Instrument Sans",system-ui,"Segoe UI",Arial,sans-serif}
+  .wrap{max-width:860px;margin:0 auto;padding:40px 28px 64px}
+  header{text-align:center;padding:36px 0 40px;border-top:1px solid var(--brass);border-bottom:1px solid var(--brass);margin-bottom:8px;outline:1px solid var(--rule);outline-offset:6px}
+  header h1{font:italic 600 64px/1.05 "Cormorant Garamond",Georgia,"Times New Roman",serif;margin:0 0 8px}
+  header h1 .amp{color:var(--brass);font-style:normal;font-weight:500;padding:0 .12em}
+  header .toast{font:600 22px/1 "Cormorant Garamond",Georgia,serif;letter-spacing:.14em;color:var(--ink)}
+  header p{margin:0;color:var(--muted)}
+  section{padding-top:36px}
+  h2{font:600 32px/1.1 "Cormorant Garamond",Georgia,serif;color:var(--ink);margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 14px}
+  h3{font:600 15px/1 "Instrument Sans",system-ui,sans-serif;color:var(--brass);margin:22px 0 4px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+  header .date{margin-top:14px;font-weight:500;letter-spacing:.16em;color:var(--muted)}
+  .item{display:grid;grid-template-columns:88px 1fr auto;gap:16px;align-items:center;padding:12px 0;border-bottom:1px solid var(--rule);break-inside:avoid;page-break-inside:avoid}
+  .pic{width:88px;height:88px;border-radius:50%;background:var(--tile);overflow:hidden;position:relative}
+  .pic img{width:100%;height:100%;object-fit:cover;display:block}
+  .pic.missing img{display:none}
+  .name{font-weight:600;font-size:16px}
+  .desc{color:var(--muted);font-size:14px;margin-top:2px}
+  .price{font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .item.empty{border:1.5px dashed var(--rule);border-radius:8px;padding:14px 16px;margin-top:10px;grid-template-columns:1fr}
+  .item.empty .name{color:var(--muted);font-weight:500}
+  .item.single{grid-template-columns:1fr}
+  footer{margin-top:40px;color:var(--muted);font-size:13px;text-align:center}
+  @media (max-width:520px){
+    .item{grid-template-columns:64px 1fr auto;gap:12px}
+    .pic{width:64px;height:64px}
+    header h1{font-size:44px}
+  }
+  @media print{
+    body{background:#fff}
+    .wrap{padding:0 8mm}
+    section.break{break-before:page}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Açelya<span class="amp">&amp;</span>Muvi</h1>
+  <div class="toast">Wedding Toast</div>
+  <div class="date">31/10/2026</div>
+</header>
+
+<section>
+  <h2>Signature Cocktails</h2>
+  <p class="sub">Craft Cocktail</p>
+
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/f29a5fd6-dac2-4e7d-ae86-67364bd440fd.jpg" alt="Afterglow"></div>
+    <div><div class="name">Afterglow</div><div class="desc">Ford’s Cin, Mezcal, St-Germain, Şeftali Nektarı, Lime Kordiyal</div></div><div class="price">1.200 ₺</div></div>
+
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/7b0b87c3-dd61-421c-9ad0-97ac8df22e41.jpg" alt="Barrel Aged Negroni"></div>
+    <div><div class="name">Barrel Aged Negroni</div><div class="desc">Tanqueray Ten, Campari, Martini Rosso</div></div><div class="price">1.100 ₺</div></div>
+
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/29b90e47-7a7c-4218-b1fd-fe7e643c08cf.jpg" alt="Beatrix Kiddo"></div>
+    <div><div class="name">Beatrix Kiddo</div><div class="desc">Grey Goose Votka, Skinos Mastika, Ev Yapımı Zencefil Birası, Greyfurt Kordiyal</div></div><div class="price">1.400 ₺</div></div>
+
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/819ab64e-acdc-4e5b-92e3-17a6fea52482.jpg" alt="La Paz"></div>
+    <div><div class="name">La Paz</div><div class="desc">Acı Biber Aromalı Olmeca Silver, Çarkıfelek Meyvesi, Hibiskus Kordiyal, Greyfurt Kordiyal</div></div><div class="price">1.100 ₺</div></div>
+
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/0d24f276-142b-4f02-8372-a581f3e9c019.jpg" alt="Uppsala"></div>
+    <div><div class="name">Uppsala</div><div class="desc">J.W. Black Label, Kuzu Kulağı, Çarkıfelek Meyvesi, Greyfurt Kordiyal</div></div><div class="price">1.100 ₺</div></div>
+
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/fde70e69-f725-4197-b548-4a5650276a26.jpg" alt="Will Turner"></div>
+    <div><div class="name">Will Turner</div><div class="desc">Kakao Yağı ile Yıkanmış Bumbu Rom, Kahveli Campari, Martini Rosso</div></div><div class="price">1.200 ₺</div></div>
+
+</section>
+
+<section>
+  <h2>Classic Cocktails</h2>
+  <p class="sub">Klasik Kokteyller</p>
+
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/1bd60d21-4ceb-4ee8-8582-b464fcb8151b.jpg" alt="Aperol Spritz"></div>
+    <div><div class="name">Aperol Spritz</div><div class="desc">Aperol, Cinzano Prosecco, Soda</div></div><div class="price">1.200 ₺</div></div>
+
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/600942b7-de38-4428-9543-0d15d938088e.jpg" alt="Dry Martini"></div>
+    <div><div class="name">Dry Martini</div><div class="desc">Tanqueray, Martini Extra Dry, Limon Twist</div></div><div class="price">1.050 ₺</div></div>
+
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/ad92cde4-0900-4c26-a02f-4b40919439e0.jpg" alt="Espresso Martini"></div>
+    <div><div class="name">Espresso Martini</div><div class="desc">Smirnoff, Kahlua, Espresso</div></div><div class="price">1.050 ₺</div></div>
+
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/a89c1a45-d8af-4498-89e4-d939614a7417.jpg" alt="Margarita"></div>
+    <div><div class="name">Margarita</div><div class="desc">Olmeca Silver, Cointreau, Lime</div></div><div class="price">1.050 ₺</div></div>
+
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/6d426604-0e65-46f8-9f78-d44c4a1fb9aa.jpg" alt="Old Cuban"></div>
+    <div><div class="name">Old Cuban</div><div class="desc">Havana Club 7 YO, Lime, Angostura Bitter, Cinzano Prosecco</div></div><div class="price">1.100 ₺</div></div>
+
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/5b2935d9-aef0-40ff-a35b-d926b4e2128d.jpg" alt="Old Fashioned"></div>
+    <div><div class="name">Old Fashioned</div><div class="desc">Bullet Bourbon, Angostura Bitter, Şeker</div></div><div class="price">1.100 ₺</div></div>
+
+</section>
+
+<section class="break">
+  <h2>Whiskies</h2>
+  <p class="sub">Viski · 4 cl</p>
+
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/84cb9425-648d-4ccc-93fb-f192b2cae42f.jpg" alt="Caol Ila"></div>
+    <div><div class="name">Caol Ila</div><div class="desc">Single Malt İskoç Viski, Islay · Dumanlı</div></div><div class="price">850 ₺</div></div>
+
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/d3142156-8ff9-44d3-87e4-832615f54e62.jpg" alt="Glenfiddich 12 YO"></div>
+    <div><div class="name">Glenfiddich 12 YO</div><div class="desc">Single Malt İskoç Viski</div></div><div class="price">1.100 ₺</div></div>
+
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/b2b020cf-033b-45a3-92bc-00cfdd5fa798.jpg" alt="Johnnie Walker Black Label"></div>
+    <div><div class="name">Johnnie Walker Black Label</div><div class="desc">Blended İskoç Viski</div></div><div class="price">750 ₺</div></div>
+
+</section>
+
+<section>
+  <h2>Wines by the Glass</h2>
+  <p class="sub">Kadeh Şaraplar</p>
+
+  <h3>White · Beyaz</h3>
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/a10188d0-d46c-49cd-8c1c-502616da1f30.jpg" alt="Sartori Pinot Grigio"></div>
+    <div><div class="name">Sartori Pinot Grigio</div><div class="desc">İtalya · Kadeh</div></div><div class="price">800 ₺</div></div>
+
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/ca730bfa-73bf-4fc5-b2bc-78691221429e.jpg" alt="Sevilen Isabey Chardonnay"></div>
+    <div><div class="name">Sevilen Isabey Chardonnay</div><div class="desc">Yerli · Kadeh</div></div><div class="price">1.200 ₺</div></div>
+
+  <h3>Red · Kırmızı</h3>
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/753b2316-c5f8-4d60-a24c-aa5649933db2.jpg" alt="Sevilen 900 Cabernet Sauvignon"></div>
+    <div><div class="name">Sevilen 900 Cabernet Sauvignon</div><div class="desc">Yerli · Kadeh</div></div><div class="price">1.100 ₺</div></div>
+
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/8cf8be98-f415-4353-b6af-22063ef33b75.jpg" alt="Sevilen Nativus Boğazkere – Öküzgözü"></div>
+    <div><div class="name">Sevilen Nativus Boğazkere – Öküzgözü</div><div class="desc">Yerli · Kadeh</div></div><div class="price">800 ₺</div></div>
+
+  <h3>Rosé · Roze</h3>
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/6fea20a5-5418-4227-8231-97f12611845a.jpg" alt="Cielo Pinot Grigio Blush"></div>
+    <div><div class="name">Cielo Pinot Grigio Blush</div><div class="desc">İtalya · Kadeh</div></div><div class="price">800 ₺</div></div>
+
+  <div class="item"><div class="pic"><img src="https://grandwyndhamistanbul.com.tr/images/30543ca3-b2af-4535-a351-367c14a5312c.jpg" alt="Sartori Pinot Grigio Blush"></div>
+    <div><div class="name">Sartori Pinot Grigio Blush</div><div class="desc">İtalya · Kadeh</div></div><div class="price">800 ₺</div></div>
+
+</section>
+
+<section>
+  <h2>Non-Alcoholic</h2>
+  <p class="sub">Alkolsüz</p>
+  <div class="item single"><div><div class="name">Mocktail</div></div></div>
+  <div class="item single"><div><div class="name">Soft Drinks</div></div></div>
+</section>
+
+
+</div>
+<script>
+  document.querySelectorAll('.pic img').forEach(function (img) {
+    function flag() { img.parentNode.classList.add('missing'); }
+    img.addEventListener('error', flag);
+    if (img.complete && img.naturalWidth === 0) flag();
+  });
+</script>
+</body>
+</html>
