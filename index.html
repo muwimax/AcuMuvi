@@ -35,6 +35,14 @@
   .item.empty .name{color:var(--muted);font-weight:500}
   .item.single{grid-template-columns:1fr}
   footer{margin-top:40px;color:var(--muted);font-size:13px;text-align:center}
+  .pic:not(.missing){cursor:zoom-in}
+  .pic:not(.missing):focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+  #lightbox{position:fixed;inset:0;z-index:50;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;background:rgba(36,48,43,.88);cursor:zoom-out}
+  #lightbox.open{display:flex}
+  #lightbox img{max-width:min(92vw,720px);max-height:78vh;border-radius:10px;object-fit:contain;background:var(--tile)}
+  #lightbox .cap{color:#fff;font:600 24px/1.2 "Cormorant Garamond",Georgia,serif;text-align:center}
+  #lightbox .close{position:absolute;top:14px;right:18px;color:#fff;font-size:34px;line-height:1;background:none;border:0;cursor:pointer}
+  @media print{#lightbox{display:none!important}}
   @media (max-width:520px){
     .item{grid-template-columns:64px 1fr auto;gap:12px}
     .pic{width:64px;height:64px}
@@ -161,6 +169,47 @@
     img.addEventListener('error', flag);
     if (img.complete && img.naturalWidth === 0) flag();
   });
+</script>
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged photo">
+  <button class="close" type="button" aria-label="Close">&times;</button>
+  <img alt="">
+  <div class="cap"></div>
+</div>
+<script>
+  (function () {
+    var box = document.getElementById('lightbox');
+    var big = box.querySelector('img');
+    var cap = box.querySelector('.cap');
+    var last = null;
+    function open(pic) {
+      var img = pic.querySelector('img');
+      if (pic.classList.contains('missing')) return;
+      last = pic;
+      big.src = img.currentSrc || img.src;
+      big.alt = img.alt;
+      cap.textContent = img.alt;
+      box.classList.add('open');
+      box.querySelector('.close').focus();
+    }
+    function close() {
+      box.classList.remove('open');
+      big.removeAttribute('src');
+      if (last) last.focus();
+    }
+    document.querySelectorAll('.pic').forEach(function (pic) {
+      pic.setAttribute('role', 'button');
+      pic.setAttribute('tabindex', '0');
+      pic.setAttribute('aria-label', 'Enlarge photo: ' + pic.querySelector('img').alt);
+      pic.addEventListener('click', function () { open(pic); });
+      pic.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(pic); }
+      });
+    });
+    box.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && box.classList.contains('open')) close();
+    });
+  })();
 </script>
 </body>
 </html>
